@@ -1,0 +1,21 @@
+name: DeathLocation
+version: '1.0'
+main: gg.aexert.deathlocation.DeathLocation
+api-version: '1.21'
+authors: [Aexert]
+commands:
+  dl:
+    description: Manage DeathLocation settings
+    usage: /dl [reload|toggle|info|show]
+    permission: deathlocation.use
+    permission-message: You don't have permission to use this command!
+permissions:
+  deathlocation.reload:
+    description: Allows reloading the config
+    default: op
+  deathlocation.toggle:
+    description: Allows toggling death messages
+    default: true
+  deathlocation.use:
+    description: Allows using the dl command
+    default: true
