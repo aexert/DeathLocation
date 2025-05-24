@@ -16,7 +16,7 @@ A Minecraft plugin that shows players their death locations with beautiful forma
 - `/dl info` - Plugin information
 
 ## Mirror Sites:
-- This plugin is also published at: [SpigotMC](https://www.spigotmc.org/resources/deathlocation.96051/) and [Modrinth](https://modrinth.com/plugin/deathlocation-by-aexert)
+- This plugin is also published at: [SpigotMC](https://www.spigotmc.org/resources/deathlocation-by-aexert.125357/) and [Modrinth](https://modrinth.com/plugin/deathlocation-by-aexert)
 
 ## Installation
 1. Download the latest .jar from [Releases](https://github.com/aexert/DeathLocation/releases)
