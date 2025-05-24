@@ -1,17 +1,29 @@
+### Maven ###
 target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
+pom.xml.*
+!target/*.jar          # Keep final plugin JAR
 dependency-reduced-pom.xml
 buildNumber.properties
-.mvn/timing.properties
-# https://github.com/takari/maven-wrapper#usage-without-binary-jar
-.mvn/wrapper/maven-wrapper.jar
+.mvn/                 # Exclude all Maven wrapper files
 
-# Eclipse m2e generated files
-# Eclipse Core
+### IDE ###
+# Eclipse
 .project
-# JDT-specific (Eclipse Java Development Tools)
 .classpath
+.settings/
+
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+
+# VS Code
+.vscode/
+
+### System ###
+.DS_Store
+Thumbs.db
+
+### Server Files ###
+logs/
+*.log
