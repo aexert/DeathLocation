@@ -3,7 +3,10 @@
 
 death-message: "☽<#8A5FFF> Core <#656665>• <#DDDDDD>You died in <#FF914D>{Dimension} <#DDDDDD>at (<#ff0000>{X}<#DDDDDD>, <#ff0000>{Y}<#DDDDDD>, <#ff0000>{Z}<#DDDDDD>)"
 
-# Player-specific settings
-players:
-# UUID:
-#   enabled: true/false
+cooldown:
+  enabled: true
+  seconds: 3  # Cooldown for commands
+  bypass-permission: "deathlocation.bypass.cooldown"
+
+players: {}
+death-locations: {}
