@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class ConfigManager {
+    private String cachedDeathMessage;
     private final DeathLocation plugin;
     private FileConfiguration config;
     private File configFile;
@@ -50,12 +51,14 @@ public class ConfigManager {
     }
 
     public void saveDeathLocation(Player player) {
-        Location loc = player.getLocation();
+        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+            Location loc = player.getLocation();
         getConfig().set("death-locations." + player.getUniqueId() + ".world", loc.getWorld().getName());
         getConfig().set("death-locations." + player.getUniqueId() + ".x", loc.getX());
         getConfig().set("death-locations." + player.getUniqueId() + ".y", loc.getY());
         getConfig().set("death-locations." + player.getUniqueId() + ".z", loc.getZ());
         saveConfig();
+        });
     }
 
     public Location getDeathLocation(Player player) {
