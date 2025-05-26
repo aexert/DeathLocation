@@ -1,6 +1,7 @@
 package gg.aexert.deathlocation.utils;
 
 import gg.aexert.deathlocation.DeathLocation;
+import gg.aexert.deathlocation.Commands;
 import org.bukkit.entity.Player;
 
 import java.util.*;
