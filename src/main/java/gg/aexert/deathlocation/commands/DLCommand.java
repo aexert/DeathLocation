@@ -51,11 +51,18 @@ public class DLCommand implements CommandExecutor {
     }
 
     private void handleToggle(CommandSender sender) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             sender.sendMessage(ColorUtils.translateHexCodes("&cPlayers only!"));
             return;
         }
-        Player player = (Player) sender;
+
+        if (plugin.getCooldownManager().isOnCooldown(player)) {
+            player.sendMessage(ColorUtils.translateHexCodes(
+                    "<#FF0000>Wait " + plugin.getCooldownManager().getRemainingCooldown(player) + "s before using this again!"
+            ));
+            return;
+        }
+
         boolean current = plugin.getConfigManager().getConfig()
                 .getBoolean("players." + player.getUniqueId() + ".enabled", true);
         boolean newValue = !current;
@@ -67,30 +74,35 @@ public class DLCommand implements CommandExecutor {
     }
 
     private void handleInfo(CommandSender sender) {
-        sender.sendMessage(ColorUtils.translateHexCodes("<#8A5FFF>DeathLocation v1.0.0"));
+        sender.sendMessage(ColorUtils.translateHexCodes("<#8A5FFF>DeathLocation v1.1.0"));
         sender.sendMessage(ColorUtils.translateHexCodes("<#8A5FFF>Author: Aexert"));
         sender.sendMessage(ColorUtils.translateHexCodes("<#8A5FFF>GitHub: https://github.com/aexert"));
     }
 
     private void handleShow(CommandSender sender) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             sender.sendMessage(ColorUtils.translateHexCodes("&cPlayers only!"));
             return;
         }
-        Player player = (Player) sender;
-        Location deathLoc = plugin.getConfigManager().getDeathLocation(player);
 
+        if (plugin.getCooldownManager().isOnCooldown(player)) {
+            player.sendMessage(ColorUtils.translateHexCodes(
+                    "<#FF0000>Wait " + plugin.getCooldownManager().getRemainingCooldown(player) + "s before using this again!"
+            ));
+            return;
+        }
+
+        Location deathLoc = plugin.getConfigManager().getDeathLocation(player);
         if (deathLoc == null) {
             player.sendMessage(ColorUtils.translateHexCodes("<#8A5FFF>No death location recorded"));
             return;
         }
 
-        String dimension;
-        switch(deathLoc.getWorld().getEnvironment()) {
-            case NETHER: dimension = "Nether"; break;
-            case THE_END: dimension = "The End"; break;
-            default: dimension = "Overworld";
-        }
+        String dimension = switch(deathLoc.getWorld().getEnvironment()) {
+            case NETHER -> "Nether";
+            case THE_END -> "The End";
+            default -> "Overworld";
+        };
 
         String message = plugin.getConfigManager().getConfig().getString("death-message")
                 .replace("{Dimension}", dimension)
