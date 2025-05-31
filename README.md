@@ -1,4 +1,4 @@
-# DeathLocation ☠️
+# 💀📍 DeathLocation
 
 A Minecraft plugin that shows players their death locations with beautiful formatting.
 
