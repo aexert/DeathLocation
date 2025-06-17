@@ -27,4 +27,4 @@ A Minecraft plugin that shows players their death locations with beautiful forma
 ```sh
 mvn clean package
 ```
-The compiled plugin will be in `target/DeathLocation-1.0.0.jar`
+The compiled plugin will be in `target/DeathLocation-1.1.0.jar`
